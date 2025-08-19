@@ -1,0 +1,17 @@
+{
+  "model_config": {
+    "input_dim": 441,
+    "latent_dim": 100,
+    "output_dim": 441,
+    "encoder_hidden_dim": 256,
+    "decoder_hidden_dim": 256,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "bidirectional": true
+  },
+  "total_parameters": 5799965,
+  "encoder_parameters": 2899812,
+  "decoder_parameters": 2900153,
+  "compression_ratio": 4.41,
+  "model_size_mb": 22.125110626220703
+}

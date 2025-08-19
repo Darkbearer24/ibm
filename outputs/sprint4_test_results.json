@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-08-01T00:56:53.982826",
+  "tests": {
+    "model_creation": true,
+    "dataset_loading": true,
+    "dataloader": true,
+    "training_step": true,
+    "checkpoint_system": true
+  },
+  "device": "cpu",
+  "training_commands": {
+    "gpu_training": {
+      "command": "python models/train.py --data_dir data/raw/Bengali --epochs 50 --batch_size 16 --learning_rate 0.001 --device cuda",
+      "description": "GPU training with recommended settings"
+    },
+    "cpu_training": {
+      "command": "python models/train.py --data_dir data/raw/Bengali --epochs 50 --batch_size 8 --learning_rate 0.001 --device cpu",
+      "description": "CPU training with reduced batch size"
+    },
+    "quick_test": {
+      "command": "python models/train.py --data_dir data/raw/Bengali --epochs 5 --batch_size 4 --max_files 10 --device auto",
+      "description": "Quick test run with limited data"
+    }
+  }
+}

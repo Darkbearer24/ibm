@@ -1,0 +1,31 @@
+{
+  "model_architecture": {
+    "encoder_input_dim": 441,
+    "encoder_hidden_dim": 256,
+    "latent_dim": 100,
+    "decoder_hidden_dim": 256,
+    "decoder_output_dim": 441,
+    "num_layers": 2
+  },
+  "training_parameters": {
+    "learning_rate": 0.001,
+    "batch_size_gpu": 16,
+    "batch_size_cpu": 8,
+    "num_epochs": 50,
+    "optimizer": "Adam",
+    "scheduler": "ReduceLROnPlateau",
+    "gradient_clipping": 1.0
+  },
+  "data_parameters": {
+    "frame_length_ms": 20,
+    "hop_length_ms": 10,
+    "n_features": 441,
+    "sample_rate": 44100,
+    "train_val_split": 0.8
+  },
+  "checkpoint_settings": {
+    "save_frequency": 5,
+    "save_best_only": true,
+    "monitor_metric": "val_loss"
+  }
+}
