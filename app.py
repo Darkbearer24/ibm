@@ -24,6 +24,12 @@ from plotly.subplots import make_subplots
 from models.encoder_decoder import SpeechTranslationModel
 from utils.denoise import preprocess_audio_complete
 from utils.framing import create_feature_matrix_advanced
+from utils.pipeline_orchestrator import PipelineOrchestrator
+from utils.logging_config import get_logging_manager, LogLevel, LogCategory
+from utils.error_handling import (
+    SpeechTranslationError, AudioProcessingError, ModelInferenceError, 
+    ReconstructionError, get_error_handler
+)
 
 # Configure page
 st.set_page_config(
@@ -58,37 +64,50 @@ AUDIO_CONFIG = {
 }
 
 @st.cache_resource
-def load_model():
-    """Load the trained model with caching."""
+def load_pipeline_orchestrator():
+    """Load the pipeline orchestrator with caching."""
     try:
-        model = SpeechTranslationModel(**MODEL_CONFIG)
+        # Initialize logging and error handling
+        logging_manager = get_logging_manager()
+        error_handler = get_error_handler()
         
-        # Try to load trained weights if available
-        checkpoint_path = Path("test_checkpoints/cpu_validation/best_model.pt")
-        if checkpoint_path.exists():
-            try:
-                checkpoint = torch.load(checkpoint_path, map_location='cpu')
-                if 'model_state_dict' in checkpoint:
-                    model.load_state_dict(checkpoint['model_state_dict'])
-                    st.success("✅ Loaded trained model weights")
-                else:
-                    model.load_state_dict(checkpoint)
-                    st.success("✅ Loaded trained model weights")
-            except Exception as e:
-                st.warning(f"⚠️ Could not load trained weights: {e}. Using random initialization.")
-        else:
-            st.info("ℹ️ No trained model found. Using randomly initialized model for demonstration.")
+        logging_manager.log_structured(
+            LogLevel.INFO, LogCategory.SYSTEM, "app_initialization",
+            "Loading pipeline orchestrator"
+        )
         
-        model.eval()
-        return model
+        # Initialize pipeline orchestrator
+        orchestrator = PipelineOrchestrator(
+            model_config=MODEL_CONFIG,
+            audio_config=AUDIO_CONFIG
+        )
+        
+        # Pipeline is automatically initialized in constructor
+        st.success("✅ Pipeline orchestrator initialized successfully")
+        logging_manager.log_structured(
+            LogLevel.INFO, LogCategory.SYSTEM, "app_initialization",
+            "Pipeline orchestrator loaded successfully"
+        )
+        
+        return orchestrator
+        
+    except SpeechTranslationError as e:
+        error_msg = f"Speech translation system error: {str(e)}"
+        st.error(f"❌ {error_msg}")
+        logging_manager.log_error("app_initialization", "load_orchestrator", str(e))
+        return None
     except Exception as e:
-        st.error(f"❌ Error loading model: {e}")
+        error_msg = f"Error initializing pipeline orchestrator: {str(e)}"
+        st.error(f"❌ {error_msg}")
+        logging_manager.log_error("app_initialization", "load_orchestrator", str(e))
         return None
 
+# Note: Individual processing functions are now handled by PipelineOrchestrator
+# Keeping these for backward compatibility and visualization purposes
+
 def preprocess_audio(audio_data, sr):
-    """Preprocess audio data for model input."""
+    """Preprocess audio data for model input (legacy function)."""
     try:
-        # Apply complete preprocessing pipeline
         processed_audio = preprocess_audio_complete(
             audio_data, sr,
             denoise_method='spectral_subtraction',
@@ -97,7 +116,6 @@ def preprocess_audio(audio_data, sr):
             remove_silence_flag=True
         )
         
-        # Extract feature matrix
         feature_result = create_feature_matrix_advanced(
             processed_audio, sr,
             frame_length_ms=AUDIO_CONFIG['frame_length_ms'],
@@ -111,55 +129,6 @@ def preprocess_audio(audio_data, sr):
     except Exception as e:
         st.error(f"❌ Error preprocessing audio: {e}")
         return None, None
-
-def model_inference(model, feature_matrix):
-    """Run model inference on feature matrix."""
-    try:
-        # Convert to tensor and add batch dimension
-        input_tensor = torch.FloatTensor(feature_matrix).unsqueeze(0)
-        
-        with torch.no_grad():
-            # Forward pass through model
-            reconstructed, latent = model(input_tensor)
-            
-            # Remove batch dimension
-            reconstructed = reconstructed.squeeze(0).numpy()
-            latent = latent.squeeze(0).numpy()
-        
-        return reconstructed, latent
-    except Exception as e:
-        st.error(f"❌ Error during model inference: {e}")
-        return None, None
-
-def reconstruct_audio(feature_matrix, sr):
-    """Reconstruct audio from feature matrix."""
-    try:
-        # Simple reconstruction: use the raw audio features
-        # In a real implementation, this would be more sophisticated
-        frame_length = int(AUDIO_CONFIG['frame_length_ms'] * sr / 1000)
-        hop_length = int(AUDIO_CONFIG['hop_length_ms'] * sr / 1000)
-        
-        # Reconstruct by overlapping and adding frames
-        n_frames, n_features = feature_matrix.shape
-        audio_length = (n_frames - 1) * hop_length + frame_length
-        reconstructed_audio = np.zeros(audio_length)
-        
-        for i, frame_features in enumerate(feature_matrix):
-            start_idx = i * hop_length
-            end_idx = start_idx + min(frame_length, len(frame_features))
-            
-            # Use the first part of features as audio samples
-            frame_audio = frame_features[:end_idx - start_idx]
-            reconstructed_audio[start_idx:end_idx] += frame_audio
-        
-        # Normalize
-        if np.max(np.abs(reconstructed_audio)) > 0:
-            reconstructed_audio = reconstructed_audio / np.max(np.abs(reconstructed_audio)) * 0.8
-        
-        return reconstructed_audio
-    except Exception as e:
-        st.error(f"❌ Error reconstructing audio: {e}")
-        return None
 
 def create_waveform_plot(original_audio, processed_audio, sr):
     """Create interactive waveform comparison plot."""
@@ -226,10 +195,10 @@ def main():
     Upload an audio file or record directly to experience real-time speech processing and translation.
     """)
     
-    # Load model
-    model = load_model()
-    if model is None:
-        st.error("❌ Failed to load model. Please check the model files.")
+    # Load pipeline orchestrator
+    orchestrator = load_pipeline_orchestrator()
+    if orchestrator is None:
+        st.error("❌ Failed to initialize pipeline orchestrator. Please check the model files.")
         return
     
     # Sidebar configuration
@@ -317,41 +286,60 @@ def main():
                 start_time = time.time()
                 
                 try:
-                    # Step 1: Preprocessing
-                    status_text.text("🔄 Preprocessing audio...")
-                    progress_bar.progress(20)
+                    # Initialize logging for this session
+                    session_id = f"streamlit_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+                    logging_manager = get_logging_manager()
                     
-                    feature_matrix, processed_audio = preprocess_audio(audio_data, sr)
+                    logging_manager.log_structured(
+                        LogLevel.INFO, LogCategory.PROCESSING, "audio_processing",
+                        f"Starting audio processing session", session_id=session_id
+                    )
                     
-                    if feature_matrix is None:
-                        st.error("❌ Failed to preprocess audio")
-                        return
+                    # Use Pipeline Orchestrator for end-to-end processing
+                    status_text.text("🔄 Processing audio through pipeline...")
+                    progress_bar.progress(10)
                     
-                    # Step 2: Model inference
-                    status_text.text("🧠 Running model inference...")
-                    progress_bar.progress(60)
+                    # Create temporary file for orchestrator
+                    with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as temp_file:
+                        sf.write(temp_file.name, audio_data, sr)
+                        temp_audio_path = temp_file.name
                     
-                    reconstructed_features, latent_representation = model_inference(model, feature_matrix)
-                    
-                    if reconstructed_features is None:
-                        st.error("❌ Failed to run model inference")
-                        return
-                    
-                    # Step 3: Audio reconstruction
-                    status_text.text("🎵 Reconstructing audio...")
-                    progress_bar.progress(80)
-                    
-                    output_audio = reconstruct_audio(reconstructed_features, sr)
-                    
-                    if output_audio is None:
-                        st.error("❌ Failed to reconstruct audio")
-                        return
-                    
-                    # Step 4: Complete
-                    status_text.text("✅ Translation complete!")
-                    progress_bar.progress(100)
-                    
-                    processing_time = time.time() - start_time
+                    try:
+                        # Run complete pipeline
+                        status_text.text("🧠 Running complete pipeline...")
+                        progress_bar.progress(50)
+                        
+                        result = orchestrator.process_audio_file(
+                            temp_audio_path,
+                            source_language=source_lang.lower(),
+                            target_language=target_lang.lower(),
+                            quality_level=audio_quality.lower()
+                        )
+                        
+                        if not result['success']:
+                            error_msg = result.get('error', 'Unknown error')
+                            st.error(f"❌ Pipeline processing failed: {error_msg}")
+                            logging_manager.log_error(
+                                "audio_processing", "pipeline_execution", error_msg, session_id
+                            )
+                            return
+                        
+                        # Extract results
+                        output_audio = result['reconstructed_audio']
+                        feature_matrix = result['feature_matrix']
+                        latent_representation = result['latent_features']
+                        processed_audio = result['processed_audio']
+                        
+                        # Step 4: Complete
+                        status_text.text("✅ Translation complete!")
+                        progress_bar.progress(100)
+                        
+                        processing_time = time.time() - start_time
+                        
+                    finally:
+                        # Clean up temporary file
+                        if os.path.exists(temp_audio_path):
+                            os.unlink(temp_audio_path)
                     
                     # Display results
                     st.success(f"🎉 Translation completed in {processing_time:.2f} seconds")
@@ -394,6 +382,14 @@ def main():
                         st.write(f"**Feature Matrix Shape:** {feature_matrix.shape}")
                         st.write(f"**Latent Representation Shape:** {latent_representation.shape}")
                         st.write(f"**Compression Ratio:** {feature_matrix.shape[1] / latent_representation.shape[1]:.1f}:1")
+                        
+                        # Additional pipeline statistics
+                        if 'pipeline_stats' in result:
+                            stats = result['pipeline_stats']
+                            st.write(f"**Preprocessing Time:** {stats.get('preprocessing_time', 'N/A')}")
+                            st.write(f"**Inference Time:** {stats.get('inference_time', 'N/A')}")
+                            st.write(f"**Reconstruction Time:** {stats.get('reconstruction_time', 'N/A')}")
+                            st.write(f"**Quality Score:** {stats.get('quality_score', 'N/A')}")
                     
                     # Visualizations
                     if show_visualizations:
@@ -419,10 +415,41 @@ def main():
                             if output_spec:
                                 st.pyplot(output_spec)
                 
-                except Exception as e:
-                    st.error(f"❌ Translation failed: {e}")
+                except AudioProcessingError as e:
+                    error_msg = f"Audio processing error: {str(e)}"
+                    st.error(f"❌ {error_msg}")
+                    logging_manager.log_error("audio_processing", "audio_error", str(e), session_id)
                     progress_bar.empty()
                     status_text.empty()
+                    
+                except ModelInferenceError as e:
+                    error_msg = f"Model inference error: {str(e)}"
+                    st.error(f"❌ {error_msg}")
+                    logging_manager.log_error("audio_processing", "model_error", str(e), session_id)
+                    progress_bar.empty()
+                    status_text.empty()
+                    
+                except ReconstructionError as e:
+                    error_msg = f"Reconstruction error: {str(e)}"
+                    st.error(f"❌ {error_msg}")
+                    logging_manager.log_error("audio_processing", "reconstruction_error", str(e), session_id)
+                    progress_bar.empty()
+                    status_text.empty()
+                    
+                except SpeechTranslationError as e:
+                    error_msg = f"Speech translation system error: {str(e)}"
+                    st.error(f"❌ {error_msg}")
+                    logging_manager.log_error("audio_processing", "system_error", str(e), session_id)
+                    progress_bar.empty()
+                    status_text.empty()
+                    
+                except Exception as e:
+                    error_msg = f"Unexpected error during processing: {str(e)}"
+                    st.error(f"❌ {error_msg}")
+                    logging_manager.log_error("audio_processing", "unexpected_error", str(e), session_id)
+                    progress_bar.empty()
+                    status_text.empty()
+                    st.exception(e)
         
         else:
             st.info("👆 Please upload an audio file to start translation")

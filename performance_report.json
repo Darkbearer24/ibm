@@ -1,0 +1,216 @@
+{
+  "timestamp": "2025-08-20T01:47:50.891335",
+  "system_info": {
+    "cpu_count": 8,
+    "cpu_freq": {
+      "current": 3110.0,
+      "min": 0.0,
+      "max": 3110.0
+    },
+    "memory_total": 15.788383483886719,
+    "memory_available": 2.7982711791992188,
+    "python_version": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+    "torch_version": "2.7.1+cpu",
+    "cuda_available": false,
+    "cuda_device_count": 0
+  },
+  "benchmark_results": {
+    "pipeline_orchestrator": {
+      "status": "completed",
+      "initialization": {
+        "execution_time": 0.09313230000043404,
+        "memory_usage": 94.3515625
+      },
+      "file_benchmarks": {
+        "short_1s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\short_1s.wav",
+            "duration": 1.0,
+            "size_mb": 0.08415603637695312
+          },
+          "iterations": 3,
+          "success_rate": 1.0,
+          "avg_execution_time": 0.9182465333336344,
+          "min_execution_time": 0.009514400000625756,
+          "max_execution_time": 2.7355248000003485,
+          "std_execution_time": 1.2850097879065312,
+          "avg_memory_delta": 29.98828125,
+          "processing_speed": 1.089032153891793,
+          "memory_efficiency": 0.0028062974224957664
+        },
+        "medium_5s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\medium_5s.wav",
+            "duration": 5.0,
+            "size_mb": 0.4206123352050781
+          },
+          "iterations": 3,
+          "success_rate": 1.0,
+          "avg_execution_time": 0.04962779999974979,
+          "min_execution_time": 0.045402600000670645,
+          "max_execution_time": 0.05654999999933352,
+          "std_execution_time": 0.00493433470250979,
+          "avg_memory_delta": 0.5729166666666666,
+          "processing_speed": 100.74998287301086,
+          "memory_efficiency": 0.7341597123579546
+        },
+        "long_10s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\long_10s.wav",
+            "duration": 10.0,
+            "size_mb": 0.8411827087402344
+          },
+          "iterations": 3,
+          "success_rate": 1.0,
+          "avg_execution_time": 0.09825893333315132,
+          "min_execution_time": 0.08987770000021555,
+          "max_execution_time": 0.10820659999990312,
+          "std_execution_time": 0.007564276957806531,
+          "avg_memory_delta": 0.0026041666666666665,
+          "processing_speed": 101.7719169217373,
+          "memory_efficiency": 323.01416015625
+        },
+        "very_long_30s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\very_long_30s.wav",
+            "duration": 30.0,
+            "size_mb": 2.5234642028808594
+          },
+          "iterations": 1,
+          "success_rate": 1.0,
+          "avg_execution_time": 0.3155979999992269,
+          "min_execution_time": 0.3155979999992269,
+          "max_execution_time": 0.3155979999992269,
+          "std_execution_time": 0.0,
+          "avg_memory_delta": 0.0,
+          "processing_speed": 95.05763661389962,
+          "memory_efficiency": Infinity
+        }
+      }
+    },
+    "individual_components": {
+      "preprocessing": {
+        "success": true,
+        "execution_time": 0.04980410000098345,
+        "memory_delta": 0.0,
+        "throughput": 4427346.342884339,
+        "error": null
+      },
+      "feature_extraction": {
+        "success": true,
+        "execution_time": 2.2690738000001147,
+        "memory_delta": 8.68359375,
+        "throughput": 97176.21348410477,
+        "error": null
+      },
+      "model_inference": {
+        "success": true,
+        "execution_time": 0.05989249999947788,
+        "memory_delta": 13.98046875,
+        "error": null
+      }
+    },
+    "concurrent_processing": {
+      "status": "completed",
+      "results": {
+        "1_threads": {
+          "num_threads": 1,
+          "total_execution_time": 0.015503300001000753,
+          "successful_requests": 0,
+          "success_rate": 0.0,
+          "throughput": 0.0,
+          "memory_delta": 3.484375,
+          "efficiency": 0.0
+        },
+        "2_threads": {
+          "num_threads": 2,
+          "total_execution_time": 0.01569980000022042,
+          "successful_requests": 0,
+          "success_rate": 0.0,
+          "throughput": 0.0,
+          "memory_delta": 4.54296875,
+          "efficiency": 0.0
+        },
+        "4_threads": {
+          "num_threads": 4,
+          "total_execution_time": 0.02435949999926379,
+          "successful_requests": 0,
+          "success_rate": 0.0,
+          "throughput": 0.0,
+          "memory_delta": 1.3828125,
+          "efficiency": 0.0
+        }
+      }
+    },
+    "memory_usage": {
+      "status": "completed",
+      "results": {
+        "short_1s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\short_1s.wav",
+            "duration": 1.0,
+            "size_mb": 0.08415603637695312
+          },
+          "success": false,
+          "baseline_memory": 525.74609375,
+          "peak_memory": 525.74609375,
+          "final_memory": 525.74609375,
+          "memory_increase": 0.0,
+          "memory_leaked": 0.0,
+          "memory_efficiency": Infinity
+        },
+        "medium_5s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\medium_5s.wav",
+            "duration": 5.0,
+            "size_mb": 0.4206123352050781
+          },
+          "success": false,
+          "baseline_memory": 525.78125,
+          "peak_memory": 525.78125,
+          "final_memory": 525.78125,
+          "memory_increase": 0.0,
+          "memory_leaked": 0.0,
+          "memory_efficiency": Infinity
+        },
+        "long_10s": {
+          "file_info": {
+            "path": "C:\\Users\\agarg\\AppData\\Local\\Temp\\tmp3zgcyj6i\\long_10s.wav",
+            "duration": 10.0,
+            "size_mb": 0.8411827087402344
+          },
+          "success": false,
+          "baseline_memory": 525.78125,
+          "peak_memory": 529.35546875,
+          "final_memory": 529.35546875,
+          "memory_increase": 3.57421875,
+          "memory_leaked": 3.57421875,
+          "memory_efficiency": 0.23534729337431695
+        }
+      }
+    }
+  },
+  "performance_analysis": {
+    "performance_metrics": {
+      "avg_processing_speed": 74.6671421406349,
+      "real_time_capable": true,
+      "max_memory_increase": 3.57421875
+    },
+    "bottlenecks": [],
+    "optimizations": [],
+    "recommendations": [
+      "System can handle real-time processing with good margin",
+      "System scales well with concurrent requests"
+    ]
+  },
+  "deployment_readiness": {
+    "overall_status": "READY",
+    "criteria": {
+      "success_rate": 1.0,
+      "max_memory_usage": 529.35546875
+    },
+    "blockers": [],
+    "warnings": [],
+    "ready_for_deployment": true
+  }
+}

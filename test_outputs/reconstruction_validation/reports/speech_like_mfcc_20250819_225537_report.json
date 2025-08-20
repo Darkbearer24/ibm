@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.06412440496832207,
+    "snr": -0.010637971357971048,
+    "correlation": -0.005705649296402409,
+    "rmse": 0.25322797035146427,
+    "mae": 0.20558139898135258,
+    "snr_db": -0.010637971357971048,
+    "spectral_distance": 3.2252235793613966e-10,
+    "mfcc_distance": 3481.0097207140893,
+    "zero_crossing_rate_diff": 0.06302734375,
+    "energy_ratio": 0.001948721891163779,
+    "dynamic_range_ratio": 1.4050977190260334,
+    "spectral_centroid_diff": 8971.686792141963,
+    "spectral_rolloff_diff": 14505.4833984375
+  },
+  "timestamp": "2025-08-19T17:25:37",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "speech_like_mfcc_20250819_225537",
+    "input_shape": [
+      173,
+      13
+    ],
+    "reconstruction_params": {
+      "feature_type": "mfcc"
+    }
+  }
+}

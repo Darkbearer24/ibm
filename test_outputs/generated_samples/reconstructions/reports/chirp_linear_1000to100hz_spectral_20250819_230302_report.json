@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.2457741547099019,
+    "snr": -0.013707450066073807,
+    "correlation": 0.0033837562661378057,
+    "rmse": 0.4957561443995444,
+    "mae": 0.44605938864632644,
+    "snr_db": -0.013707450066073807,
+    "spectral_distance": 9.777576825264148e-09,
+    "mfcc_distance": 3285.192005307381,
+    "zero_crossing_rate_diff": 0.04907507183908046,
+    "energy_ratio": 0.003557253250035765,
+    "dynamic_range_ratio": 0.7142857157412099,
+    "spectral_centroid_diff": 5494.254390750194,
+    "spectral_rolloff_diff": 10956.935277478447
+  },
+  "timestamp": "2025-08-19T17:33:02",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "chirp_linear_1000to100hz_spectral_20250819_230302",
+    "input_shape": [
+      173,
+      257
+    ],
+    "reconstruction_params": {
+      "feature_type": "spectral"
+    }
+  }
+}

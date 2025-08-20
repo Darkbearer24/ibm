@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.00021399024168966568,
+    "snr": -1.6865258473520328,
+    "correlation": -0.0001290555661137311,
+    "rmse": 0.01462840530234467,
+    "mae": 0.0002525160753943212,
+    "snr_db": -1.6865258473520328,
+    "spectral_distance": 1.1526264538069457e-15,
+    "mfcc_distance": 21396.800026136745,
+    "zero_crossing_rate_diff": 0.0,
+    "energy_ratio": 0.47452650964260085,
+    "dynamic_range_ratio": 1.25,
+    "spectral_centroid_diff": 5098.265903283683,
+    "spectral_rolloff_diff": 8673.026553468208
+  },
+  "timestamp": "2025-08-19T17:25:41",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "impulse_train_raw_20250819_225541",
+    "input_shape": [
+      1024,
+      171
+    ],
+    "reconstruction_params": {
+      "feature_type": "raw"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.1461430863838767,
+    "snr": -0.3388815437372755,
+    "correlation": -0.0010803128386142893,
+    "rmse": 0.38228665472898304,
+    "mae": 0.33236945565871606,
+    "snr_db": -0.3388815437372755,
+    "spectral_distance": 1.8447589587439377e-09,
+    "mfcc_distance": 1110.032322241335,
+    "zero_crossing_rate_diff": 0.01093693551300578,
+    "energy_ratio": 0.08054253210599982,
+    "dynamic_range_ratio": 1.1467581687966846,
+    "spectral_centroid_diff": 978.7077212747167,
+    "spectral_rolloff_diff": 2142.740415010838
+  },
+  "timestamp": "2025-08-19T17:25:23",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "noisy_sine_raw_20250819_225523",
+    "input_shape": [
+      1024,
+      171
+    ],
+    "reconstruction_params": {
+      "feature_type": "raw"
+    }
+  }
+}

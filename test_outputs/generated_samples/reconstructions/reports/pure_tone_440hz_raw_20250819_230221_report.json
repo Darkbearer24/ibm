@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.25679497796642436,
+    "snr": -0.2043028985618611,
+    "correlation": 0.00022862792302383173,
+    "rmse": 0.5067494232521872,
+    "mae": 0.4513697540358696,
+    "snr_db": -0.2043028985618611,
+    "spectral_distance": 1.2405244420261161e-08,
+    "mfcc_distance": 7855.789783782792,
+    "zero_crossing_rate_diff": 0.044820851293103446,
+    "energy_ratio": 0.04826699782971791,
+    "dynamic_range_ratio": 1.428571538229255,
+    "spectral_centroid_diff": 5322.8233272923135,
+    "spectral_rolloff_diff": 8471.211610991379
+  },
+  "timestamp": "2025-08-19T17:32:21",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "pure_tone_440hz_raw_20250819_230221",
+    "input_shape": [
+      512,
+      171
+    ],
+    "reconstruction_params": {
+      "feature_type": "raw"
+    }
+  }
+}

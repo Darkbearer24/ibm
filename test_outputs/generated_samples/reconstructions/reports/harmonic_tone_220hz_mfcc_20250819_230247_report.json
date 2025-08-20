@@ -1,0 +1,29 @@
+{
+  "evaluation_metrics": {
+    "mse": 0.09315752149535962,
+    "snr": -0.0027809246199348206,
+    "correlation": 0.006240403067871231,
+    "rmse": 0.3052171710362306,
+    "mae": 0.2525649791566221,
+    "snr_db": -0.0027809246199348206,
+    "spectral_distance": 5.552945297700859e-10,
+    "mfcc_distance": 4504.109261634484,
+    "zero_crossing_rate_diff": 0.01464282507183908,
+    "energy_ratio": 0.0010437498041962316,
+    "dynamic_range_ratio": 1.3292991392544289,
+    "spectral_centroid_diff": 5898.62544244121,
+    "spectral_rolloff_diff": 12542.719558189656
+  },
+  "timestamp": "2025-08-19T17:32:47",
+  "sample_rate": 44100,
+  "additional_info": {
+    "session_id": "harmonic_tone_220hz_mfcc_20250819_230247",
+    "input_shape": [
+      173,
+      13
+    ],
+    "reconstruction_params": {
+      "feature_type": "mfcc"
+    }
+  }
+}

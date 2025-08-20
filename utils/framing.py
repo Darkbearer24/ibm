@@ -30,12 +30,21 @@ def frame_audio(y, sr, frame_length_ms=20, hop_length_ms=10):
     np.ndarray
         Framed audio with shape (n_frames, frame_length)
     """
+    # Handle empty audio input
+    if len(y) == 0:
+        frame_length = int(frame_length_ms * sr / 1000)
+        return np.zeros((0, frame_length))
+    
     # Convert ms to samples
     frame_length = int(frame_length_ms * sr / 1000)
     hop_length = int(hop_length_ms * sr / 1000)
     
     # Calculate number of frames
-    n_frames = 1 + (len(y) - frame_length) // hop_length
+    n_frames = max(0, 1 + (len(y) - frame_length) // hop_length)
+    
+    # Handle case where audio is shorter than frame length
+    if len(y) < frame_length:
+        return np.zeros((0, frame_length))
     
     # Create frame matrix
     frames = np.zeros((n_frames, frame_length))

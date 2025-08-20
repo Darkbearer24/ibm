@@ -1,0 +1,406 @@
+{
+  "validation_timestamp": "2025-08-19T17:27:39",
+  "test_categories": {
+    "data_corruption": [
+      {
+        "test_name": "bit_corruption",
+        "status": "SUCCESS",
+        "description": "Testing resilience to random bit corruption",
+        "feature_shape": [
+          100,
+          128
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.0048694610595703125,
+        "quality_score": 0.0,
+        "output_duration": 1.01,
+        "metrics": {}
+      },
+      {
+        "test_name": "zero_corruption",
+        "status": "SUCCESS",
+        "description": "Testing resilience to systematic zero frames",
+        "feature_shape": [
+          100,
+          128
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.003999948501586914,
+        "quality_score": 0.0,
+        "output_duration": 1.01,
+        "metrics": {}
+      },
+      {
+        "test_name": "gaussian_noise",
+        "status": "SUCCESS",
+        "description": "Testing resilience to Gaussian noise",
+        "feature_shape": [
+          100,
+          128
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.004000425338745117,
+        "quality_score": 0.0,
+        "output_duration": 1.01,
+        "metrics": {}
+      },
+      {
+        "test_name": "impulse_noise",
+        "status": "SUCCESS",
+        "description": "Testing resilience to impulse noise",
+        "feature_shape": [
+          100,
+          128
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.00500035285949707,
+        "quality_score": 0.0,
+        "output_duration": 1.01,
+        "metrics": {}
+      },
+      {
+        "test_name": "missing_blocks",
+        "status": "SUCCESS",
+        "description": "Testing resilience to missing data blocks",
+        "feature_shape": [
+          100,
+          128
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.0060007572174072266,
+        "quality_score": 0.0,
+        "output_duration": 1.01,
+        "metrics": {}
+      }
+    ],
+    "boundary_conditions": [
+      {
+        "test_name": "minimum_size",
+        "status": "SUCCESS",
+        "description": "Testing minimum possible feature size",
+        "feature_shape": [
+          1,
+          1
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.0030007362365722656,
+        "quality_score": 0.0,
+        "output_duration": 0.02,
+        "metrics": {}
+      },
+      {
+        "test_name": "large_matrix",
+        "status": "SUCCESS",
+        "description": "Testing large matrix (316x100)",
+        "feature_shape": [
+          316,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.00999903678894043,
+        "quality_score": 0.0,
+        "output_duration": 3.17,
+        "metrics": {}
+      },
+      {
+        "test_name": "wide_matrix",
+        "status": "SUCCESS",
+        "description": "Testing very wide feature matrix",
+        "feature_shape": [
+          5,
+          1000
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.0030012130737304688,
+        "quality_score": 0.0,
+        "output_duration": 0.06,
+        "metrics": {}
+      },
+      {
+        "test_name": "tall_matrix",
+        "status": "SUCCESS",
+        "description": "Testing very tall feature matrix",
+        "feature_shape": [
+          1000,
+          5
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.023003578186035156,
+        "quality_score": 0.0,
+        "output_duration": 10.01,
+        "metrics": {}
+      },
+      {
+        "test_name": "tiny_values",
+        "status": "SUCCESS",
+        "description": "Testing very small numerical values",
+        "feature_shape": [
+          50,
+          50
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.05444049835205078,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      },
+      {
+        "test_name": "huge_values",
+        "status": "SUCCESS",
+        "description": "Testing very large numerical values",
+        "feature_shape": [
+          50,
+          50
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.003000974655151367,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      }
+    ],
+    "data_types_formats": [
+      {
+        "test_name": "dtype_float32",
+        "status": "SUCCESS",
+        "description": "Testing float32 data type",
+        "feature_shape": [
+          50,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.003999471664428711,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      },
+      {
+        "test_name": "dtype_float64",
+        "status": "SUCCESS",
+        "description": "Testing float64 data type",
+        "feature_shape": [
+          50,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.004001140594482422,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      },
+      {
+        "test_name": "dtype_int16",
+        "status": "SUCCESS",
+        "description": "Testing int16 data type",
+        "feature_shape": [
+          50,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.0030045509338378906,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      },
+      {
+        "test_name": "dtype_int32",
+        "status": "SUCCESS",
+        "description": "Testing int32 data type",
+        "feature_shape": [
+          50,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.005003452301025391,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      },
+      {
+        "test_name": "non_contiguous",
+        "status": "SUCCESS",
+        "description": "Testing non-contiguous array layout",
+        "feature_shape": [
+          25,
+          50
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.007999420166015625,
+        "quality_score": 0.0,
+        "output_duration": 0.26,
+        "metrics": {}
+      },
+      {
+        "test_name": "fortran_order",
+        "status": "SUCCESS",
+        "description": "Testing Fortran-order array",
+        "feature_shape": [
+          50,
+          100
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.003000497817993164,
+        "quality_score": 0.0,
+        "output_duration": 0.51,
+        "metrics": {}
+      }
+    ],
+    "performance_stress": [
+      {
+        "test_name": "rapid_processing",
+        "status": "SUCCESS",
+        "description": "Testing rapid successive processing",
+        "metrics": {
+          "total_time": 0.02741265296936035,
+          "avg_time_per_call": 0.0027412652969360353,
+          "avg_quality_score": 0.0,
+          "quality_std": 0.0
+        }
+      },
+      {
+        "test_name": "memory_pressure",
+        "status": "SUCCESS",
+        "description": "Testing under memory pressure",
+        "metrics": {
+          "matrices_processed": 5,
+          "avg_quality_score": 0.0
+        }
+      }
+    ],
+    "feature_type_robustness": [
+      {
+        "test_name": "raw_normal",
+        "status": "SUCCESS",
+        "description": "Testing normal raw features",
+        "feature_shape": [
+          512,
+          85
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.021651029586791992,
+        "quality_score": 0.0,
+        "output_duration": 5.13,
+        "metrics": {}
+      },
+      {
+        "test_name": "raw_scaled",
+        "status": "SUCCESS",
+        "description": "Testing scaled raw features",
+        "feature_shape": [
+          512,
+          85
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.011273384094238281,
+        "quality_score": 0.0,
+        "output_duration": 5.13,
+        "metrics": {}
+      },
+      {
+        "test_name": "raw_normalized",
+        "status": "SUCCESS",
+        "description": "Testing normalized raw features",
+        "feature_shape": [
+          512,
+          85
+        ],
+        "feature_type": "raw",
+        "processing_time": 0.011546134948730469,
+        "quality_score": 0.0,
+        "output_duration": 5.13,
+        "metrics": {}
+      },
+      {
+        "test_name": "spectral_normal",
+        "status": "SUCCESS",
+        "description": "Testing normal spectral features",
+        "feature_shape": [
+          87,
+          257
+        ],
+        "feature_type": "spectral",
+        "processing_time": 0.017769575119018555,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      },
+      {
+        "test_name": "spectral_scaled",
+        "status": "SUCCESS",
+        "description": "Testing scaled spectral features",
+        "feature_shape": [
+          87,
+          257
+        ],
+        "feature_type": "spectral",
+        "processing_time": 0.014865398406982422,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      },
+      {
+        "test_name": "spectral_normalized",
+        "status": "SUCCESS",
+        "description": "Testing normalized spectral features",
+        "feature_shape": [
+          87,
+          257
+        ],
+        "feature_type": "spectral",
+        "processing_time": 0.0029985904693603516,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      },
+      {
+        "test_name": "mfcc_normal",
+        "status": "SUCCESS",
+        "description": "Testing normal mfcc features",
+        "feature_shape": [
+          87,
+          13
+        ],
+        "feature_type": "mfcc",
+        "processing_time": 0.004994630813598633,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      },
+      {
+        "test_name": "mfcc_scaled",
+        "status": "SUCCESS",
+        "description": "Testing scaled mfcc features",
+        "feature_shape": [
+          87,
+          13
+        ],
+        "feature_type": "mfcc",
+        "processing_time": 0.009006500244140625,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      },
+      {
+        "test_name": "mfcc_normalized",
+        "status": "SUCCESS",
+        "description": "Testing normalized mfcc features",
+        "feature_shape": [
+          87,
+          13
+        ],
+        "feature_type": "mfcc",
+        "processing_time": 0.0030040740966796875,
+        "quality_score": 0.0,
+        "output_duration": 0.88,
+        "metrics": {}
+      }
+    ]
+  },
+  "summary": {
+    "total_tests": 28,
+    "total_passed": 28,
+    "total_errors": 0,
+    "success_rate": 1.0,
+    "error_rate": 0.0
+  }
+}

@@ -1,0 +1,515 @@
+{
+  "test_timestamp": "2025-08-19T17:25:47",
+  "test_summary": {
+    "total_quality_tests": 24,
+    "quality_success_rate": 1.0,
+    "avg_quality_score": 0.06818907592191792,
+    "edge_cases_tested": 6,
+    "edge_cases_passed": 4
+  },
+  "detailed_results": {
+    "quality_testing": {
+      "test_results": [
+        {
+          "sample_name": "sine_440hz",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.008906729808596392,
+          "snr_db": -0.18951652097352306,
+          "correlation": -0.00016649591614932314,
+          "mse": 0.2559250592244071,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "sine_440hz",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.005371240058610594,
+          "snr_db": 1.1669417577278978e-05,
+          "correlation": 0.017124606318401864,
+          "mse": 0.2449731714005314,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "sine_440hz",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.00012155659811112774,
+          "snr_db": -0.0036865848069876023,
+          "correlation": -0.004891673318762062,
+          "mse": 0.24518186825394406,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "sine_440hz",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.002812466407182759,
+          "snr_db": -0.0006365596552606624,
+          "correlation": 0.00898796441054477,
+          "mse": 0.24500973888875527,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "chirp",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.018467229284362546,
+          "snr_db": -0.3553015526701535,
+          "correlation": 0.003388519179457576,
+          "mse": 0.13565751680832608,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "chirp",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.003031894414538718,
+          "snr_db": -0.011642799900313442,
+          "correlation": 0.007698181074994136,
+          "mse": 0.12533231285054897,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "chirp",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.0006448349641094075,
+          "snr_db": -0.0032713610191287133,
+          "correlation": 0.0015854238374503392,
+          "mse": 0.1250909556005147,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "chirp",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.0033323710085881994,
+          "snr_db": -0.028997523295512202,
+          "correlation": 0.005941800520913575,
+          "mse": 0.1258341519140519,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "multi_tone",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.04546149114792511,
+          "snr_db": -0.5460031898634223,
+          "correlation": 0.00022568071011545897,
+          "mse": 0.090716311157791,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "multi_tone",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.04587703298308405,
+          "snr_db": -0.03442962058830826,
+          "correlation": 0.016106863624100614,
+          "mse": 0.08061693480784415,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "multi_tone",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.041336008947779314,
+          "snr_db": -0.0052343147852467785,
+          "correlation": 0.003956168595079969,
+          "mse": 0.08007680760408115,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "multi_tone",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.04359056101972541,
+          "snr_db": -0.079731824747201,
+          "correlation": 0.007850944781116743,
+          "mse": 0.08146226889612654,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "noisy_sine",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.016108506421199965,
+          "snr_db": -0.3388815437372755,
+          "correlation": -0.0010803128386142893,
+          "mse": 0.1461430863838767,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "noisy_sine",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.014652671834288705,
+          "snr_db": -0.28860368890452065,
+          "correlation": 0.0025030668618054005,
+          "mse": 0.144453025518475,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "noisy_sine",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.00021504504577509744,
+          "snr_db": -0.006139037820991042,
+          "correlation": -0.005174724455626003,
+          "mse": 0.13535683077738575,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "noisy_sine",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.0030226881745594398,
+          "snr_db": -0.0020449900147970377,
+          "correlation": 0.009351920461933078,
+          "mse": 0.1352292914596815,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "speech_like",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.09830841849171768,
+          "snr_db": -0.7221684187809185,
+          "correlation": -0.0001635488450689853,
+          "mse": 0.06892288956944609,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "speech_like",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.07640326898368152,
+          "snr_db": -0.08614162944781568,
+          "correlation": 0.008046749519591683,
+          "mse": 0.06524897804665113,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "speech_like",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.07214093444158863,
+          "snr_db": -0.010637971357971048,
+          "correlation": -0.005705649296402409,
+          "mse": 0.06412440496832207,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "speech_like",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.07702445122194913,
+          "snr_db": -0.05532458473338914,
+          "correlation": 0.011531232354224298,
+          "mse": 0.06478761750306246,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "impulse_train",
+          "feature_type": "raw",
+          "feature_shape": [
+            1024,
+            171
+          ],
+          "quality_score": 0.2944773214451408,
+          "snr_db": -1.6865258473520328,
+          "correlation": -0.0001290555661137311,
+          "mse": 0.00021399024168966568,
+          "output_duration": 10.25,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "impulse_train",
+          "feature_type": "spectral",
+          "feature_shape": [
+            173,
+            513
+          ],
+          "quality_score": 0.1811429793881271,
+          "snr_db": -18.2898306480937,
+          "correlation": 0.00465145199369592,
+          "mse": 0.010126228104990852,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "impulse_train",
+          "feature_type": "mfcc",
+          "feature_shape": [
+            173,
+            13
+          ],
+          "quality_score": 0.3904870641895982,
+          "snr_db": -3.106690695719381,
+          "correlation": 0.00026067958687526284,
+          "mse": 0.0003069967026639832,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        },
+        {
+          "sample_name": "impulse_train",
+          "feature_type": "mel",
+          "feature_shape": [
+            173,
+            128
+          ],
+          "quality_score": 0.1936010558457903,
+          "snr_db": -13.286136829473211,
+          "correlation": -0.0024894727795874722,
+          "mse": 0.0031994720771048556,
+          "output_duration": 1.74,
+          "status": "SUCCESS"
+        }
+      ],
+      "summary_stats": {
+        "total_tests": 24,
+        "successful": 24,
+        "failed": 0,
+        "success_rate": 1.0,
+        "avg_quality_score": 0.06818907592191792,
+        "std_quality_score": 0.0985895843047955,
+        "avg_snr_db": -1.6307319195134784,
+        "avg_correlation": 0.0037254300339156846
+      },
+      "quality_analysis": {
+        "spectral": {
+          "count": 6,
+          "avg_quality": 0.05441318127705511,
+          "std_quality": 0.06224001695531145,
+          "best_sample": "impulse_train"
+        },
+        "mel": {
+          "count": 6,
+          "avg_quality": 0.05389726561296587,
+          "std_quality": 0.06820671006209128,
+          "best_sample": "impulse_train"
+        },
+        "mfcc": {
+          "count": 6,
+          "avg_quality": 0.08415757403116031,
+          "std_quality": 0.13958188790628467,
+          "best_sample": "impulse_train"
+        },
+        "raw": {
+          "count": 6,
+          "avg_quality": 0.08028828276649042,
+          "std_quality": 0.1003749532537336,
+          "best_sample": "impulse_train"
+        }
+      }
+    },
+    "edge_case_testing": {
+      "edge_case_results": [
+        {
+          "test": "empty_matrix",
+          "status": "UNEXPECTED_SUCCESS",
+          "result": {
+            "session_id": "empty_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              0,
+              10
+            ],
+            "output_length": 441,
+            "output_duration": 0.01,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\empty_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        },
+        {
+          "test": "single_frame",
+          "status": "SUCCESS",
+          "result": {
+            "session_id": "single_frame_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              1,
+              100
+            ],
+            "output_length": 882,
+            "output_duration": 0.02,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\single_frame_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        },
+        {
+          "test": "large_matrix",
+          "status": "SUCCESS",
+          "result": {
+            "session_id": "large_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              1000,
+              512
+            ],
+            "output_length": 441441,
+            "output_duration": 10.01,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\large_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        },
+        {
+          "test": "extreme_values",
+          "status": "SUCCESS",
+          "result": {
+            "session_id": "extreme_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              50,
+              100
+            ],
+            "output_length": 22491,
+            "output_duration": 0.51,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\extreme_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        },
+        {
+          "test": "nan_inf_values",
+          "status": "UNEXPECTED_SUCCESS",
+          "result": {
+            "session_id": "nan_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              50,
+              100
+            ],
+            "output_length": 22491,
+            "output_duration": 0.51,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\nan_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        },
+        {
+          "test": "narrow_features",
+          "status": "SUCCESS",
+          "result": {
+            "session_id": "narrow_test_20250819_225547",
+            "timestamp": "20250819_225547",
+            "input_shape": [
+              10,
+              1
+            ],
+            "output_length": 4851,
+            "output_duration": 0.11,
+            "audio_path": "test_outputs\\reconstruction_validation\\audio\\narrow_test_20250819_225547.wav",
+            "quality_score": 0.0,
+            "metrics": {},
+            "reconstruction_params": {},
+            "has_original": false,
+            "quality_flag": "LOW_QUALITY"
+          }
+        }
+      ]
+    }
+  },
+  "recommendations": [
+    "Low average quality score. Consider improving reconstruction algorithm or evaluation metrics."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-08-20T13:29:30.581895",
+  "test_suites": {
+    "unit_tests": {
+      "status": "PASSED",
+      "execution_time": 9.347439289093018,
+      "method": "direct_import"
+    },
+    "integration_tests": {
+      "status": "PASSED",
+      "execution_time": 8.656244039535522,
+      "method": "direct_import"
+    },
+    "edge_case_tests": {
+      "status": "PASSED",
+      "execution_time": 8.413191318511963,
+      "method": "direct_import"
+    }
+  },
+  "overall_status": "ALL_PASSED",
+  "summary": {
+    "total_test_suites": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "success_rate": 100.0
+  },
+  "recommendations": [
+    "[OK] System is ready for deployment"
+  ],
+  "dependencies": {
+    "available": [
+      "numpy",
+      "torch",
+      "librosa",
+      "soundfile",
+      "streamlit",
+      "pytest",
+      "psutil",
+      "scipy",
+      "matplotlib"
+    ],
+    "missing": [],
+    "all_available": true
+  },
+  "project_structure": {
+    "available_files": [
+      "app.py",
+      "utils/pipeline_orchestrator.py",
+      "utils/logging_config.py",
+      "utils/error_handling.py",
+      "utils/framing.py",
+      "utils/denoise.py",
+      "models/encoder_decoder.py",
+      "test_unit.py",
+      "test_integration.py",
+      "test_edge_cases.py"
+    ],
+    "missing_files": [],
+    "structure_complete": true
+  }
+}
