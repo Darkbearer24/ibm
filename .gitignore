@@ -133,3 +133,10 @@ celerybeat-schedule
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Large test output files
+test_outputs/generated_samples/comprehensive_test_report.json
+# Other large files that might be generated
+*.json.large
+test_outputs/**/*.json
+!test_outputs/**/small_*.json
